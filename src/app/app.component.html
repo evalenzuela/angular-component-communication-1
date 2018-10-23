@@ -6,11 +6,11 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <h1>Welcome ____</h1>
-      <h3>___ Group</h3>
+      <h1>Welcome {{userName}}</h1>
+      <h3>{{userCity}} Group</h3>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <app-profile></app-profile>
+      <app-profile (profileUpdated)="updateInfo($event)"></app-profile>
     </div>
   </div>
 </div>

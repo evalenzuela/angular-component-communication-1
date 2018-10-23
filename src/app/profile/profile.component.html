@@ -1,2 +1,2 @@
-<app-profile-detail></app-profile-detail>
-<app-profile-form></app-profile-form>
+<app-profile-detail [myProfileData]="myProfileData"></app-profile-detail>
+<app-profile-form [countries] = 'countries' (profileUpdated)="showProfileInfo($event)"></app-profile-form>

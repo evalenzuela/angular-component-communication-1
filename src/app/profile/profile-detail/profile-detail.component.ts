@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-profile-detail',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileDetailComponent implements OnInit {
 
+  @Input() myProfileData = {
+    name: '',
+    email: '',
+    city: '',
+    country: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

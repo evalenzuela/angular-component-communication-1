@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-communication';
+
+  userName: string;
+  userCity: string;
+
+  updateInfo(profileData: {name: string, email: string, city: string, country: string}) {
+
+    console.log('updateInfo');
+
+    this.userCity = profileData.city;
+    this.userName = profileData.name;
+
+  }
 }
