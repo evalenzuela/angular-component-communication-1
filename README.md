@@ -1,4 +1,9 @@
-# AngularCommunication
+# Angular Communication - Using Event Emitter
+
+##Description
+
+This project was build to show how to communicate between components using event emitters. This is only useful when you have 2 levels of components.
+If you have more, communication gets complicated.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
