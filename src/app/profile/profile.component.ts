@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -9,16 +10,13 @@ export class ProfileComponent implements OnInit {
 
   countries = [];
 
-  @Output() profileUpdated = new EventEmitter<{name: string, email: string, country: string, city: string}>();
+  @Output() profileUpdated = new EventEmitter<User>();
 
   constructor() { }
 
-  myProfileData = {
-    name: '',
-    email: '',
-    city: '',
-    country: ''
-  }
+  myProfileData: User = new User(
+    '', '', '', ''
+  );
 
   ngOnInit() {
     this.countries = [
@@ -27,20 +25,11 @@ export class ProfileComponent implements OnInit {
     ];
   }
 
-  showProfileInfo(profileData: {name: string, email: string, country: string, city: string}) {
-    this.myProfileData.name = profileData.name;
-    this.myProfileData.email = profileData.email;
-    this.myProfileData.city = profileData.city;
-    this.myProfileData.country = profileData.country;
+  showProfileInfo(profileData: User) {
 
-    this.profileUpdated.emit({
-      name: this.myProfileData.name,
-      email: this.myProfileData.email,
-      country: this.myProfileData.country,
-      city: this.myProfileData.city}
-    );
+    this.myProfileData = profileData;
 
-    console.log('myProfileData');
+    this.profileUpdated.emit(profileData);
 
   }
 

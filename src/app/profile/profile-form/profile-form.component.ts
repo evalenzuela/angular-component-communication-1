@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 
 import { User } from '../../models/user.model';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-profile-form',
@@ -11,23 +12,25 @@ export class ProfileFormComponent implements OnInit {
 
   profile: User;
   @Input() countries = [];
-  @Output() profileUpdated = new EventEmitter<{name: string, email: string, country: string, city: string}>();
+  @Output() profileUpdated = new EventEmitter<User>();
+  @ViewChild('f') profileForm: NgForm;
+  defaultCountry: string = 'Peru';
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.countries);
+
   }
 
-  onSaveProfile() {
-    this.profile = new User('Eduardo', 'valenzuela.eduardo@gmail.com', 'Lima', 'Perú');
-    console.log('Emitting...');
-    this.profileUpdated.emit({
-      name: this.profile.name,
-      email: this.profile.email,
-      city: this.profile.city,
-      country: this.profile.country
-    });
+  onSubmit() {
+    this.profile = new User(
+      this.profileForm.value.name,
+      this.profileForm.value.email,
+      this.profileForm.value.city,
+      this.profileForm.value.country
+    );
+
+    this.profileUpdated.emit(this.profile);
   }
 
 }
